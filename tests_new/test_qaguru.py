@@ -6,7 +6,7 @@ import os
 def test_student_registration(browser_management_qaguru):
     browser.open('/')
     browser.wait_until(5)
-    browser.element('/html/body/div[2]/div[3]/div[1]').click()
+    browser.element('[data-testid="ClearIcon"]').click()
     browser.element('[placeholder="John"]').type('Elena')
     browser.element('[placeholder="Snow"]').type('Ivanova')
     browser.element('[placeholder="name@example.com"]').type('Ivanova@mail.com')
@@ -17,5 +17,12 @@ def test_student_registration(browser_management_qaguru):
     browser.element('[data-timestamp="1699736400000"]').click()
     browser.element('[value="Female"]').click()
     browser.element('[value="Sports"]').click()
-    browser.all('.MuiInputBase-root')['4'].element_by()
+    browser.all('[role="button"]')[1].click()
+    browser.all('[role="option"]')[2].click()
+    browser.element('[data-testid="address"]').type('Санкт-петербург, ул. Новая') #тест не закончен
+
+
+
+
+
 
