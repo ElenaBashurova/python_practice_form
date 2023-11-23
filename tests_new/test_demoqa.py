@@ -28,18 +28,9 @@ def test_student_registration(browser_management_demoqa):
 
     #Проверка данных
     browser.element('.modal-header').should(have.text('Thanks for submitting the form'))
-    browser.element('.modal-body').should(have.text(
-        'Romanov Ivan'
-        and 'romanov.i@mail.com'
-        and 'Male'
-        and '9087658909'
-        and '6 february,2002'
-        and 'Maths'
-        and 'Reading'
-        and 'images.jpeg'
-        and 'city Moscow, streen Lenina'
-        and 'Haryana Karnal'
-        ))
+    browser.all('tbody tr td:last-child').should(have.exact_texts(
+        'Romanov Ivan', 'romanov.i@mail.com', 'Male', '9087658909', '06 February,2002', 'Maths',
+        'Reading', 'images.jpeg', 'city Moscow, street Lenina', 'Haryana Karnal'))
 
     browser.element('.modal-footer').click()
 
