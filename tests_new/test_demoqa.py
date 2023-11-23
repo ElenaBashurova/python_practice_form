@@ -4,7 +4,7 @@ import os
 
 
 def test_student_registration(browser_management_demoqa):
-    browser.open('/')
+    browser.open('/automation-practice-form')
 
     browser.element('.practice-form-wrapper').should(have.text('Student Registration Form'))
 
@@ -18,7 +18,7 @@ def test_student_registration(browser_management_demoqa):
     browser.element('.react-datepicker__month-select').click().element(by.text('February')).click()
     browser.element('.react-datepicker__year-select').click().element(by.text('2002')).click()
     browser.element('.react-datepicker__day--006').click()
-    browser.element('#subjectsInput').type('new').click()
+    browser.element('#subjectsInput').send_keys('Maths').press_enter()
     browser.element('[for=hobbies-checkbox-2]').click()
     browser.element('#uploadPicture').send_keys(os.path.abspath('picture/images.jpeg'))
     browser.element('#currentAddress').type('city Moscow, street Lenina')
@@ -31,9 +31,15 @@ def test_student_registration(browser_management_demoqa):
     browser.element('.modal-body').should(have.text(
         'Romanov Ivan'
         and 'romanov.i@mail.com'
+        and 'Male'
         and '9087658909'
-        and '11 Nov 1992'
-        and 'Haryana Karnal'))
+        and '6 february,2002'
+        and 'Maths'
+        and 'Reading'
+        and 'images.jpeg'
+        and 'city Moscow, streen Lenina'
+        and 'Haryana Karnal'
+        ))
 
     browser.element('.modal-footer').click()
 
